@@ -1,0 +1,9 @@
+#add-transaction {
+    background: rgb(209, 209, 209);
+    border-radius: 10px;
+    height: 60px;
+    width: 60px;
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Vertically centers content */
+    justify-content: center; /* Horizontally centers content */
+}

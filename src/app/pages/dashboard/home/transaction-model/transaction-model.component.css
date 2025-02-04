@@ -1,0 +1,38 @@
+/* Optional styling */
+.fixed {
+    position: fixed;
+  }
+  .inset-0 {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .bg-opacity-50 {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* transaction.component.css */
+.toast {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  z-index: 1000;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
