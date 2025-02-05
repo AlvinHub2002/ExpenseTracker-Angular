@@ -1,5 +1,5 @@
 .dashboard {
-    margin-top: 20px;
+    padding-top: 20px;
     display: flex;
     height: 100vh;
     transition: all 0.3s ease-in-out;
@@ -34,3 +34,4 @@ app-sidebar {
 .dashboard:not(.collapsed) .content {
     margin-left: 0;
 }
+

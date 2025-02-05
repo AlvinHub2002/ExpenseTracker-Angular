@@ -11,24 +11,25 @@
   
 
   <!-- First grid item -->
-  <div id="statistics" class="col-span-4 text-black rounded-md shadow-sm p-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 h-full p-4">
-      <div id="first-grid-sub-1" class="row-span-2 col-span-1 flex relative min-w-[150px] max-w-[200px]">
-        <h3 class="absolute top-2 left-2 text-xl font-semibold text-gray-600 dark:text-white">Hi,</h3>
-        <h1 class="m-auto text-2xl font-semibold dark:text-white">{{Loggeduser.name}}</h1>
-      </div>
+  <div id="statistics" class="col-span-3 text-black rounded-md shadow-sm p-4">
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 h-full p-4">
+      <div id="first-grid-sub-1" 
+  class="row-span-2 col-span-1 flex flex-col justify-center items-start relative min-w-[150px] max-w-[200px] p-2 sm:min-w-[200px] sm:max-w-[250px]">
+  <h3 class="text-md sm:text-lg font-medium text-gray-600 dark:text-white">Hi,</h3>
+  <h1 class="text-lg sm:text-xl font-semibold dark:text-white whitespace-nowrap mt-1">  {{ Loggeduser.name.split(' ')[0] }}</h1>
+</div>
   
-      <div id="first-grid-sub-2" class="row-span-2 col-span-1 flex flex-col justify-between items-center rounded-md shadow-md p-4 min-w-[150px] max-w-[200px]">
+      <div id="first-grid-sub-2" class="row-span-2 col-span-1 flex flex-col justify-between items-center rounded-md shadow-md p-4 min-w-[100px] max-w-[150px]">
         <h3 class="text-l font-semibold text-gray-600 dark:text-white self-center">Balance</h3>
         <h1 class="text-xl font-bold text-black dark:text-white m-auto">₹{{ getFormattedAmount(balance) }}</h1>
       </div>
   
-      <div id="first-grid-sub-3" class="row-span-2 col-span-1 flex flex-col justify-between items-center rounded-md shadow-md p-4 min-w-[150px] max-w-[200px]">
+      <div id="first-grid-sub-3" class="row-span-2 col-span-1 flex flex-col justify-between items-center rounded-md shadow-md p-4 min-w-[100px] max-w-[150px]">
         <h3 class="text-l font-semibold text-gray-600 dark:text-white self-center">Expense</h3>
         <h1 class="text-xl font-bold text-red-600 dark:text-white m-auto">₹{{ getFormattedAmount(expense) }}</h1>
       </div>
   
-      <div id="first-grid-sub-4" class="row-span-2 col-span-1 flex flex-col justify-between items-center rounded-md shadow-md p-4 min-w-[150px] max-w-[200px]">
+      <div id="first-grid-sub-4" class="row-span-2 col-span-1 flex flex-col justify-between items-center rounded-md shadow-md p-4 min-w-[100px] max-w-[150px]">
         <h3 class="text-l font-semibold text-gray-600 dark:text-white self-center">Income</h3>
         <h1 class="text-xl font-bold text-green-600 dark:text-white m-auto">₹{{ getFormattedAmount(income) }}</h1>
       </div>
