@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FirestoreService,Loggeduser } from '../../../firestore.service';
 import { AuthService } from '../../../auth.service';
 import { UserService } from '../../../user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [RouterModule],
+  imports: [RouterModule,CommonModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
@@ -18,6 +19,15 @@ export class SidebarComponent {
     email:'',
     phone:''
   };
+
+  isSidebarOpen = true;
+
+  @Output() sidebarToggled = new EventEmitter<boolean>();
+
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+    this.sidebarToggled.emit(this.isSidebarOpen);
+  }
 
   constructor(private userService : UserService, private AuthService:AuthService,private router:Router){}
 

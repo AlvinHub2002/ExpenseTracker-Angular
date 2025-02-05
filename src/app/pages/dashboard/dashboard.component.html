@@ -1,6 +1,6 @@
-<div class="dashboard">
-    <app-sidebar></app-sidebar>
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
+<div class="dashboard" [ngClass]="{ 'collapsed': !isSidebarOpen }">
+  <app-sidebar (sidebarToggled)="isSidebarOpen = $event"></app-sidebar>
+  <div class="content">
+    <router-outlet></router-outlet>
   </div>
+</div>

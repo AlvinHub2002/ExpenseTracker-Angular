@@ -1,5 +1,5 @@
 <h1 class="text-2xl font-semibold text-gray-600 dark:text-white lg:text-xl">Dashboard</h1>
-<div id="main-content" class="grid grid-rows-3 grid-flow-col gap-5 h-screen p-4 relative">
+<div id="main-content" class="grid grid-cols-1 md:grid-cols-4 gap-5 min-h-screen p-4 relative">
   <!-- Add Button -->
   <div class="absolute top-[0.1rem] right-4">
     <button (click)="openModel()"
@@ -12,88 +12,88 @@
 
   <!-- First grid item -->
   <div id="statistics" class="col-span-4 text-black rounded-md shadow-sm p-4">
-    <!-- Inner grid for 3 items -->
-    <div class="grid grid-cols-4 gap-4 h-full p-4">
-      <div id="first-grid-sub-1" class="row-span-2 col-span-1 text-black flex relative">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 h-full p-4">
+      <div id="first-grid-sub-1" class="row-span-2 col-span-1 flex relative min-w-[150px] max-w-[200px]">
         <h3 class="absolute top-2 left-2 text-xl font-semibold text-gray-600 dark:text-white">Hi,</h3>
         <h1 class="m-auto text-2xl font-semibold dark:text-white">{{Loggeduser.name}}</h1>
       </div>
-
-      <div id="first-grid-sub-2" class="row-span-2 col-span-1 text-black flex flex-col justify-between items-center rounded-md shadow-md p-4">
-        <h3 class="text-l font-semibold text-gray-600 dark:text-white self-centre">Balance</h3>
+  
+      <div id="first-grid-sub-2" class="row-span-2 col-span-1 flex flex-col justify-between items-center rounded-md shadow-md p-4 min-w-[150px] max-w-[200px]">
+        <h3 class="text-l font-semibold text-gray-600 dark:text-white self-center">Balance</h3>
         <h1 class="text-xl font-bold text-black dark:text-white m-auto">₹{{ getFormattedAmount(balance) }}</h1>
       </div>
-
-      <div id="first-grid-sub-3" class="row-span-2 col-span-1 text-black flex flex-col justify-between items-center rounded-md shadow-md p-4">
-        <h3 class="text-l font-semibold text-gray-600 dark:text-white self-centre">Expense</h3>
+  
+      <div id="first-grid-sub-3" class="row-span-2 col-span-1 flex flex-col justify-between items-center rounded-md shadow-md p-4 min-w-[150px] max-w-[200px]">
+        <h3 class="text-l font-semibold text-gray-600 dark:text-white self-center">Expense</h3>
         <h1 class="text-xl font-bold text-red-600 dark:text-white m-auto">₹{{ getFormattedAmount(expense) }}</h1>
       </div>
-
-      <div id="first-grid-sub-4" class="row-span-2 col-span-1 text-black flex flex-col justify-between items-center rounded-md shadow-md p-4">
-        <h3 class="text-l font-semibold text-gray-600 dark:text-white self-centre">Income</h3>
+  
+      <div id="first-grid-sub-4" class="row-span-2 col-span-1 flex flex-col justify-between items-center rounded-md shadow-md p-4 min-w-[150px] max-w-[200px]">
+        <h3 class="text-l font-semibold text-gray-600 dark:text-white self-center">Income</h3>
         <h1 class="text-xl font-bold text-green-600 dark:text-white m-auto">₹{{ getFormattedAmount(income) }}</h1>
       </div>
     </div>
   </div>
+  
 
   <!-- Second grid item -->
-  <div id="history" class="row-span-2 col-span-1 text-black flex flex-col items-center rounded-md shadow-md">
-    <h3 class="text-l font-semibold text-gray-600 dark:text-white mt-3">Transaction History</h3>
-    <div class="flex flex-col mt-10 w-full px-4">
-      <div>
-        <div class="inline-block align-middle w-full">
-          <div class="overflow-hidden">
-            <table class="w-full">
-              <thead>
-                <tr>
-                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Transaction</th>
-                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Amount</th>
-                  <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
-                <tr *ngFor="let transaction of recentTransactions">
-                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
-                    {{ transaction.title }}
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
-                    {{ transaction.type === 'Income' ? '+' : '-' }} {{ getFormattedAmount(transaction.amount) }}
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                    <button
-                      type="button"
-                      class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
-                      (click)="openEditTransaction(transaction)"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="size-4">
-                        <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
-                        <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
-                      </svg>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <div class="flex justify-end mt-4">
-              <a
-                [routerLink]="['/dashboard/transaction']"
-                class="font-semibold text-sm flex items-center gap-x-2"
-              >
-                See More
-                <span>&rarr;</span>
-              </a>
-            </div>
-          </div>
+  <!-- History Section -->
+<div id="history" class="col-span-4 md:col-span-2 row-span-1 text-black flex flex-col items-center rounded-md shadow-md w-full">
+  <h3 class="text-l font-semibold text-gray-600 dark:text-white mt-3">Transaction History</h3>
+  <div class="flex flex-col mt-10 w-full px-4">
+    <div>
+      <div class="inline-block align-middle w-full">
+        <!-- Make this container scrollable on smaller screens -->
+        <div class="overflow-auto max-h-[300px] sm:max-h-none">
+          <table class="w-full min-w-full">
+            <thead>
+              <tr>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Transaction</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Amount</th>
+                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-neutral-500">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 dark:divide-neutral-700">
+              <tr *ngFor="let transaction of recentTransactions">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-neutral-200">
+                  {{ transaction.title }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-neutral-200">
+                  {{ transaction.type === 'Income' ? '+' : '-' }} {{ getFormattedAmount(transaction.amount) }}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                  <button
+                    type="button"
+                    class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:text-blue-400"
+                    (click)="openEditTransaction(transaction)"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="size-4">
+                      <path d="M13.488 2.513a1.75 1.75 0 0 0-2.475 0L6.75 6.774a2.75 2.75 0 0 0-.596.892l-.848 2.047a.75.75 0 0 0 .98.98l2.047-.848a2.75 2.75 0 0 0 .892-.596l4.261-4.262a1.75 1.75 0 0 0 0-2.474Z" />
+                      <path d="M4.75 3.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h6.5c.69 0 1.25-.56 1.25-1.25V9A.75.75 0 0 1 14 9v2.25A2.75 2.75 0 0 1 11.25 14h-6.5A2.75 2.75 0 0 1 2 11.25v-6.5A2.75 2.75 0 0 1 4.75 2H7a.75.75 0 0 1 0 1.5H4.75Z" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex justify-end mt-4">
+          <a [routerLink]="['/dashboard/transaction']" class="font-semibold text-sm flex items-center gap-x-2">
+            See More
+            <span>&rarr;</span>
+          </a>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Third grid item -->
-  <div id="analytics" class="row-span-2 col-span-3 text-black flex flex-col items-center rounded-md shadow-md">
+  <!-- Analytics Section -->
+  <div id="analytics" class="col-span-4 md:col-span-2 row-span-1 text-black flex flex-col justify-center items-center rounded-md shadow-md w-full">
     <h3 class="text-l font-semibold text-gray-600 dark:text-white mt-3">Expense Classification</h3>
-    <app-doughnut-chart></app-doughnut-chart>
+    <app-doughnut-chart class="w-full h-full"></app-doughnut-chart>
   </div>
+
 
   <div id="add-transaction" class="fixed bottom-4 right-4">
     <button (click)="openModel()">

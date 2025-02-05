@@ -17,8 +17,7 @@ export class DoughnutChartComponent implements OnInit {
   } = {
     chart: {
       type: 'pie',
-      height: 500,
-      width: 450,
+      width: '100%'
     },
     series: [], 
     labels: [], 

@@ -1,20 +1,35 @@
 .dashboard {
     display: flex;
-    height: 100vh; 
-  }
-  
-  app-sidebar {
-    flex: 0 0 250px; 
-    height: 100%; 
-    background-color: #f9f9f9; 
-    border-right: 1px solid #e0e0e0; 
-  }
-  
-  .content {
-    flex: 1; 
+    height: 100vh;
+    transition: all 0.3s ease-in-out;
+}
+
+app-sidebar {
+    flex: 0 0 250px;
+    height: 100%;
+    background-color: #f9f9f9;
+    border-right: 1px solid #e0e0e0;
+    transition: flex 0.3s ease-in-out;
+}
+
+.dashboard.collapsed app-sidebar {
+    flex: 0 0 60px; /* Collapsed width */
+}
+
+.content {
+    flex: 1;
     padding: 20px;
     overflow-y: auto;
     background-color: #ffffff;
-  }
-  
- 
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Ensure content takes full width when sidebar is collapsed */
+.dashboard.collapsed .content {
+    margin-left: 0;
+}
+
+/* When sidebar expands, ensure content gets proper space */
+.dashboard:not(.collapsed) .content {
+    margin-left: 0;
+}
