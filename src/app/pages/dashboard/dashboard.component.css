@@ -1,4 +1,5 @@
 .dashboard {
+    margin-top: 20px;
     display: flex;
     height: 100vh;
     transition: all 0.3s ease-in-out;
@@ -7,8 +8,8 @@
 app-sidebar {
     flex: 0 0 250px;
     height: 100%;
-    background-color: #f9f9f9;
-    border-right: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    /* border-right: 1px solid #e0e0e0; */
     transition: flex 0.3s ease-in-out;
 }
 
@@ -26,7 +27,7 @@ app-sidebar {
 
 /* Ensure content takes full width when sidebar is collapsed */
 .dashboard.collapsed .content {
-    margin-left: 0;
+    margin-left: -20px;
 }
 
 /* When sidebar expands, ensure content gets proper space */
